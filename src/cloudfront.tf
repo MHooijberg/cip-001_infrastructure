@@ -1,24 +1,24 @@
 # Create an Origin Access Control (OAC)
 resource "aws_cloudfront_origin_access_control" "oac" {
-  name                              = "${local.domain_name}-oac"
+  name                              = "${local.project_domain}-oac"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always" # recommended: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_origin_access_control?utm_source=chatgpt.com#signing_behavior-1
   signing_protocol                  = "sigv4"
-  description                       = "OAC for ${local.domain_name} S3 origin"
+  description                       = "OAC for ${local.project_domain} S3 origin"
 }
 
 # CloudFront distribution
 resource "aws_cloudfront_distribution" "cdn" {
   enabled             = true
   is_ipv6_enabled     = true
-  comment             = "CDN for ${local.domain_name}"
+  comment             = "CDN for ${local.project_domain}"
   default_root_object = "index.html"
 
-  aliases = [local.domain_name]
+  aliases = [local.project_domain]
 
   origin {
-    domain_name = aws_s3_bucket.marketing_website.bucket_regional_domain_name
-    origin_id   = "S3-${aws_s3_bucket.marketing_website.id}"
+    domain_name = aws_s3_bucket.website.bucket_regional_domain_name
+    origin_id   = "S3-${aws_s3_bucket.website.id}"
 
     # Link the OAC to origin (secure access)
     origin_access_control_id = aws_cloudfront_origin_access_control.oac.id
@@ -27,7 +27,7 @@ resource "aws_cloudfront_distribution" "cdn" {
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "S3-${aws_s3_bucket.marketing_website.id}"
+    target_origin_id = "S3-${aws_s3_bucket.website.id}"
 
     viewer_protocol_policy = "redirect-to-https"
     compress               = true

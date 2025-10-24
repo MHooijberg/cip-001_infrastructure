@@ -3,9 +3,9 @@ output "cloudfront_domain" {
 }
 
 output "website_bucket" {
-  value = aws_s3_bucket.marketing_website.bucket
+  value = aws_s3_bucket.website.bucket
 }
 
 output "site_url" {
-  value = "https://${local.domain_name}/"
+  value = "https://${local.project_domain}/"
 }
