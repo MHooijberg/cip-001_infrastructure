@@ -1,18 +1,11 @@
 # Request ACM certificate in us-east-1 (required for CloudFront)
 resource "aws_acm_certificate" "cert" {
   provider          = aws.us_east_1
-  domain_name       =  "${local.project_name}.${local.project_domain}"
+  domain_name       = "${local.project_name}.${local.project_domain}"
   validation_method = "DNS"
   lifecycle {
     create_before_destroy = true
   }
-}
-
-# Find the hosted zone in Route53 (assumes the zone exists in your account)
-data "aws_route53_zone" "primary" {
-  provider     = aws.us_east_1
-  name         = local.domain_name
-  private_zone = false
 }
 
 # Create the DNS validation records (one per domain_validation_options)
