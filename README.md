@@ -139,9 +139,3 @@ This project is licensed under the GPL-3.0 License.
 ---
 
 Feel free to open issues or pull requests for improvements or questions.
-
-# Todo:
-The following tasks should still be done.
-- [ ] Add 'configuration and variables' section.
-- [ ] Add 'Terraform Outputs' section.
-- [ ] Add 'Trouble shooting' section.
