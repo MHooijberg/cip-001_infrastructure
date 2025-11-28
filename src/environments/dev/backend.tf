@@ -5,5 +5,6 @@ terraform {
     region  = "eu-north-1"
     encrypt = true
     profile = "cip-prod"
+    dynamodb_table = "cip001-tf-lock"
   }
 }
