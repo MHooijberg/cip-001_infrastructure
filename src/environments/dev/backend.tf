@@ -1,10 +1,10 @@
 terraform {
   backend "s3" {
-    bucket  = "cip001.tf-state"
-    key     = "state/terraform.tfstate"
+    profile = "cip-dev"
     region  = "eu-north-1"
+    bucket  = "cip001.tf-state"
     encrypt = true
-    profile = "cip-prod"
+    key     = "state/terraform.tfstate"
     dynamodb_table = "cip001-tf-lock"
   }
 }
