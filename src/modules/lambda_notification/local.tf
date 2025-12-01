@@ -1,6 +1,6 @@
 locals {
-  # All configuration values are now provided as input variables
-  # Use this file only for derived/computed locals if needed
-  project_domain        = "${var.project_name}.${var.domain_name}" # "cip-001.mhooijberg.com"
-  from_address          = "noreply@${local.project_domain}" # "noreply@cip.mhooijberg.com"
+  # The project domain name is based on the root domain name, and the name of the project.
+  project_domain        = "${var.project_name}.${var.domain_name}"
+  # The email address from which the notifications are send will be a noreply domain, based on the project domain.
+  from_address          = "noreply@${local.project_domain}"
 }

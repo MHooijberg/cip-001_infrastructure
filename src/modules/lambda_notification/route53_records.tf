@@ -1,10 +1,3 @@
-# Find the hosted zone in Route53 (assumes the zone exists in your account)
-data "aws_route53_zone" "primary" {
-  provider     = aws.us_east_1
-  name         = local.domain_name
-  private_zone = false
-}
-
 # Add the TXT verification record to Route53 for SES.
 resource "aws_route53_record" "ses_verification" {
   provider = aws.us_east_1

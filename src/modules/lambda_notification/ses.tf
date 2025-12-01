@@ -1,9 +1,4 @@
 // Route53
-resource "aws_iam_role_policy_attachment" "attach_ses" {
-  role       = aws_iam_role.lambda_exec.name
-  policy_arn = aws_iam_policy.ses_send_email.arn
-}
-
 resource "aws_sesv2_email_identity" "mail_send_address" {
   email_identity = var.to_address
 }

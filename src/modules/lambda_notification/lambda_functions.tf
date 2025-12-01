@@ -1,8 +1,3 @@
-resource "aws_iam_role_policy_attachment" "lambda_basic_execution" {
-  role       = aws_iam_role.lambda_exec_role.name
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
-}
-
 resource "aws_lambda_function" "cip-001_contact_api" {
   function_name = "my_lambda_function"
   role          = aws_iam_role.lambda_exec_role.arn
