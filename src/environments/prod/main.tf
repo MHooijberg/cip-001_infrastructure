@@ -25,3 +25,20 @@ provider "aws" {
 }
 
 data "aws_caller_identity" "me" {}
+
+# All configuration comes from input.tfvars
+module "lambda_notification" {
+  source = "../../modules/lambda_notification"
+
+  project_name          = var.project_name
+  domain_name           = var.domain_name
+  to_address            = var.to_address
+}
+
+module "static_website" {
+  source = "../../modules/static_website"
+
+  project_name          = var.project_name
+  domain_name           = var.domain_name
+  enable_index_fallback = var.to_address
+}

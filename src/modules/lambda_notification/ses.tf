@@ -5,7 +5,7 @@ resource "aws_iam_role_policy_attachment" "attach_ses" {
 }
 
 resource "aws_sesv2_email_identity" "mail_send_address" {
-  email_identity = local.to_address
+  email_identity = var.to_address
 }
 
 resource "aws_sesv2_email_identity" "mail_domain" {

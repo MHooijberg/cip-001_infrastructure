@@ -11,8 +11,8 @@ resource "aws_lambda_function" "cip-001_contact_api" {
 
   environment {
     variables = {
-      TO_ADDRESS   = local.to_address
-      FROM_ADDRESS = local.from_address # TODO: use custom mail domain.
+      TO_ADDRESS   = var.to_address
+      FROM_ADDRESS = local.from_address
     }
   }
 }
