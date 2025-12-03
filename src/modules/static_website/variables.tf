@@ -1,14 +1,14 @@
 variable "project_name" {
-  description = "Project name used for naming resources"
+  description = "Project name used for naming resources."
   type        = string
 }
 
 variable "domain_name" {
-  description = "Base domain name (e.g., mhooijberg.com)"
+  description = "Base domain name under which the project will be hosted."
   type        = string
 }
 
 variable "enable_index_fallback" {
-  description = "Enable index fallback for S3"
+  description = "Enable index fallback for S3."
   type        = bool
 }
