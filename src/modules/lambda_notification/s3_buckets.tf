@@ -4,7 +4,7 @@ resource "random_id" "bucket_suffix" {
 
 # S3 bucket (for static website hosting)
 resource "aws_s3_bucket" "lambda" {
-  bucket = "${locals.project_domain}_lambda_${random_id.bucket_suffix.hex}"
+  bucket = "${local.project_domain}_lambda_${random_id.bucket_suffix.hex}"
   # allow Terraform to destroy/recreate during testing; remove force_destroy in production if you want to protect objects
   force_destroy = true
 

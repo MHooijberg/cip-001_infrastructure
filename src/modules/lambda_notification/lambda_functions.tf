@@ -1,5 +1,5 @@
-resource "aws_lambda_function" "cip-001_contact_api" {
-  function_name = "my_lambda_function"
+resource "aws_lambda_function" "contact_api" {
+  function_name = "${var.project_name}_contact_api"
   role          = aws_iam_role.lambda_exec_role.arn
   handler       = "src/index.handler"
   runtime       = "nodejs22.x"
