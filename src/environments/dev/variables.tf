@@ -17,3 +17,15 @@ variable "enable_index_fallback" {
   description = "Enable index fallback for S3"
   type        = bool
 }
+
+variable "aws_region" {
+  description = "AWS region"
+  type        = string
+  default     = "eu-north-1"
+}
+
+variable "aws_region_acm" {
+  description = "AWS region for ACM certificates (CloudFront requires us-east-1)"
+  type        = string
+  default     = "us-east-1"
+}

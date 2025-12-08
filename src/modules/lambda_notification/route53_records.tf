@@ -20,6 +20,7 @@ resource "aws_route53_record" "mailfrom_mx" {
   ]
 }
 resource "aws_route53_record" "mailfrom_spf" {
+  provider = aws.us_east_1
   zone_id = data.aws_route53_zone.primary.zone_id
   name    = aws_ses_domain_mail_from.mailfrom.mail_from_domain
   type    = "TXT"
@@ -29,6 +30,7 @@ resource "aws_route53_record" "mailfrom_spf" {
 
 # DKIM setup for SES
 resource "aws_route53_record" "dkim_records" {
+  provider = aws.us_east_1
   for_each = toset(aws_sesv2_email_identity.mail_domain.dkim_signing_attributes[0].tokens)
   zone_id  = data.aws_route53_zone.primary.zone_id
   name     = "${each.value}._domainkey.${local.project_domain}"
