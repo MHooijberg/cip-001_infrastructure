@@ -12,3 +12,8 @@ variable "to_address" {
   description = "Email address for receiving notifications."
   type        = string
 }
+
+variable "environment" {
+  description = "The name of the environment (e.g., dev, prod)."
+  type        = string
+}

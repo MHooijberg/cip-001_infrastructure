@@ -5,3 +5,4 @@ enable_index_fallback = false
 to_address            = "m.hooijberg24@gmail.com"
 aws_region     = "eu-north-1"
 aws_region_acm = "us-east-1"
+environment = "prod"

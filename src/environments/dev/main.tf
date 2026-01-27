@@ -14,7 +14,7 @@ terraform {
 # Configure the main AWS Provider
 provider "aws" {
   region  = var.aws_region
-  profile = "cip-001-dev"
+  profile = "cip-001-${var.environment}"
 }
 
 # AWS provider for CloudFront/ACM certificate must be created in us-east-1.
@@ -33,6 +33,7 @@ module "lambda_notification" {
   project_name          = var.project_name
   domain_name           = var.domain_name
   to_address            = var.to_address
+  environment           = var.environment
 }
 
 module "static_website" {
@@ -40,5 +41,6 @@ module "static_website" {
 
   project_name          = var.project_name
   domain_name           = var.domain_name
-  enable_index_fallback            = var.to_address
+  enable_index_fallback = var.to_address
+  environment           = var.environment
 }

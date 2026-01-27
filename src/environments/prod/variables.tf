@@ -19,13 +19,18 @@ variable "enable_index_fallback" {
 }
 
 variable "aws_region" {
-  description = "AWS region"
+  description = "AWS region."
   type        = string
   default     = "eu-north-1"
 }
 
 variable "aws_region_acm" {
-  description = "AWS region for ACM certificates (CloudFront requires us-east-1)"
+  description = "AWS region for ACM certificates (CloudFront requires us-east-1)."
   type        = string
   default     = "us-east-1"
+}
+
+variable "environment" {
+  description = "The name of the environment (e.g., dev, prod)."
+  type        = string
 }

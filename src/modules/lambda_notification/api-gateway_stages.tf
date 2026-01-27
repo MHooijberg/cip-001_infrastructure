@@ -1,12 +1,6 @@
-resource "aws_apigatewayv2_stage" "prod" {
+resource "aws_apigatewayv2_stage" "stage" {
   api_id      = aws_apigatewayv2_api.http_api.id
-  name        = "prod"
-  auto_deploy = true
-}
-
-resource "aws_apigatewayv2_stage" "dev" {
-  api_id      = aws_apigatewayv2_api.http_api.id
-  name        = "dev"
+  name        = var.environment
   auto_deploy = true
 }
 

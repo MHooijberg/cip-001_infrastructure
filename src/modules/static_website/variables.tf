@@ -12,3 +12,8 @@ variable "enable_index_fallback" {
   description = "Enable index fallback for S3."
   type        = bool
 }
+
+variable "environment" {
+  description = "The name of the environment (e.g., dev, prod)."
+  type        = string
+}
