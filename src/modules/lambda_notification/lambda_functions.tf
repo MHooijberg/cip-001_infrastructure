@@ -8,6 +8,7 @@ resource "aws_lambda_function" "contact_api" {
     variables = {
       TO_ADDRESS   = var.to_address
       FROM_ADDRESS = local.from_address
+      ENVIRONMENT = var.environment
     }
   }
 }

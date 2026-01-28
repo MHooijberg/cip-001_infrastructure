@@ -2,10 +2,10 @@
 resource "aws_cloudfront_distribution" "cdn" {
   enabled             = true
   is_ipv6_enabled     = true
-  comment             = "CDN for ${local.project_domain}"
+  comment             = "CDN for ${local.computed_domain}"
   default_root_object = "index.html"
 
-  aliases = [local.project_domain]
+  aliases = [local.computed_domain]
 
   origin {
     domain_name = aws_s3_bucket.website.bucket_regional_domain_name

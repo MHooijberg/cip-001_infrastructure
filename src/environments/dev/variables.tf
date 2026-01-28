@@ -33,4 +33,9 @@ variable "aws_region_acm" {
 variable "environment" {
   description = "The name of the environment (e.g., dev, prod)."
   type        = string
+
+  validation {
+    condition     = var.environment == "dev"
+    error_message = "This value cannot be changed."
+  }
 }

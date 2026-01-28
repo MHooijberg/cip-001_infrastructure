@@ -2,7 +2,7 @@
 resource "aws_route53_record" "alias_a" {
   provider = aws.us_east_1
   zone_id  = data.aws_route53_zone.primary.zone_id
-  name     = local.project_domain
+  name     = local.computed_domain
   type     = "A"
 
   alias {
@@ -15,7 +15,7 @@ resource "aws_route53_record" "alias_a" {
 resource "aws_route53_record" "alias_aaaa" {
   provider = aws.us_east_1
   zone_id  = data.aws_route53_zone.primary.zone_id
-  name     = local.project_domain
+  name     = local.computed_domain
   type     = "AAAA"
 
   alias {
