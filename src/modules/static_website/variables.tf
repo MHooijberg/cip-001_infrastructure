@@ -3,8 +3,13 @@ variable "project_name" {
   type        = string
 }
 
-variable "domain_name" {
-  description = "Base domain name under which the project will be hosted."
+variable "root_domain_name" {
+  description = "Root domain name (e.g., mhooijberg.com). Used for Route53 zone lookup."
+  type        = string
+}
+
+variable "project_domain" {
+  description = "Full domain name for this project (e.g., cip-001.mhooijberg.com or dev.cip-001.mhooijberg.com)."
   type        = string
 }
 

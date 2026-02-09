@@ -4,7 +4,7 @@ resource "aws_sesv2_email_identity" "mail_send_address" {
 }
 
 resource "aws_sesv2_email_identity" "mail_domain" {
-  email_identity = local.project_domain
+  email_identity = local.computed_domain
   dkim_signing_attributes {
     next_signing_key_length = RSA_2048_BIT
   }

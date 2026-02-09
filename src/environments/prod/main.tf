@@ -30,17 +30,19 @@ data "aws_caller_identity" "me" {}
 module "lambda_notification" {
   source = "../../modules/lambda_notification"
 
-  project_name          = var.project_name
-  domain_name           = var.domain_name
-  to_address            = var.to_address
-  environment           = var.environment
+  project_name     = var.project_name
+  root_domain_name = var.root_domain_name
+  project_domain   = var.project_domain
+  to_address       = var.to_address
+  environment      = var.environment
 }
 
 module "static_website" {
   source = "../../modules/static_website"
 
   project_name          = var.project_name
-  domain_name           = var.domain_name
+  root_domain_name      = var.root_domain_name
+  project_domain        = var.project_domain
   enable_index_fallback = var.to_address
   environment           = var.environment
 }

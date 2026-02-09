@@ -1,3 +1,4 @@
 locals {
-  computed_domain = var.environment == "prod" ? "${var.project_name}.${var.domain_name}" : "${var.environment}.${var.project_name}.${var.domain_name}"
+  is_prod         = var.environment == "prod"
+  computed_domain = local.is_prod ? "${var.project_domain}" : "${var.environment}.${var.project_domain}"
 }
