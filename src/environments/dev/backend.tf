@@ -1,3 +1,4 @@
+
 terraform {
   backend "s3" {
     profile = "cip-001-dev"
@@ -5,6 +6,6 @@ terraform {
     bucket  = "cip001.tf-state"
     encrypt = true
     key     = "state/terraform.tfstate"
-    dynamodb_table = "cip001-tf-lock"
+    use_lockfile = true
   }
 }
