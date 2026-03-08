@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    profile = "cip-prod"
+    profile = "cip-001-prod"
     region  = "eu-north-1"
     bucket  = "cip001.tf-state"
     encrypt = true
