@@ -58,6 +58,7 @@ resource "aws_cloudfront_distribution" "cdn" {
   }
 
   depends_on = [
-    aws_acm_certificate_validation.cert_validation
+    aws_acm_certificate_validation.cert_validation,
+    aws_acm_certificate.cert
   ]
 }

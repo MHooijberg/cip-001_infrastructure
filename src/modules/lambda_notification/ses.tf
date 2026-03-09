@@ -6,11 +6,11 @@ resource "aws_sesv2_email_identity" "mail_send_address" {
 resource "aws_sesv2_email_identity" "mail_domain" {
   email_identity = local.computed_domain
   dkim_signing_attributes {
-    next_signing_key_length = RSA_2048_BIT
+    next_signing_key_length = "RSA_2048_BIT"
   }
 }
 
-resource "aws_sesv2_email_identity_mail_from_attributes" "example" {
+resource "aws_sesv2_email_identity_mail_from_attributes" "mail_from" {
   email_identity = aws_sesv2_email_identity.mail_domain.email_identity
 
   behavior_on_mx_failure = "USE_DEFAULT_VALUE"
