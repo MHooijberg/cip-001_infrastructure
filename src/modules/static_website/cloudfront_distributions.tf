@@ -1,20 +1,11 @@
-# Create an Origin Access Control (OAC)
-resource "aws_cloudfront_origin_access_control" "oac" {
-  name                              = "${local.project_domain}-oac"
-  origin_access_control_origin_type = "s3"
-  signing_behavior                  = "always" # recommended: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_origin_access_control?utm_source=chatgpt.com#signing_behavior-1
-  signing_protocol                  = "sigv4"
-  description                       = "OAC for ${local.project_domain} S3 origin"
-}
-
 # CloudFront distribution
 resource "aws_cloudfront_distribution" "cdn" {
   enabled             = true
   is_ipv6_enabled     = true
-  comment             = "CDN for ${local.project_domain}"
+  comment             = "CDN for ${local.computed_domain}"
   default_root_object = "index.html"
 
-  aliases = [local.project_domain]
+  aliases = [local.computed_domain]
 
   origin {
     domain_name = aws_s3_bucket.website.bucket_regional_domain_name
@@ -44,7 +35,7 @@ resource "aws_cloudfront_distribution" "cdn" {
 
   # If this is a SPA, return index.html for 403/404 so client routing works
   dynamic "custom_error_response" {
-    for_each = local.enable_index_fallback ? [1] : []
+    for_each = var.enable_index_fallback ? [1] : []
     content {
       error_code            = 404
       response_code         = 200
@@ -67,6 +58,7 @@ resource "aws_cloudfront_distribution" "cdn" {
   }
 
   depends_on = [
-    aws_acm_certificate_validation.cert_validation
+    aws_acm_certificate_validation.cert_validation,
+    aws_acm_certificate.cert
   ]
 }

@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   terraform:
     build: .
@@ -7,8 +5,8 @@ services:
     working_dir: /workspace
     volumes:
       - ./src:/workspace                    # Mount current project dir
-      - ~/.aws:/root/.aws:ro            # Mount AWS credentials/profile read-only
+      - ~/.aws:/root/.aws
+      # - ~/.aws/sso:/root/.aws/sso:ro      # THIS IS CRITICAL
     environment:
-      - AWS_PROFILE=cip-main            # Use your local AWS profile
-      - AWS_REGION=eu-north-1           # Optional
-    entrypoint: ["terraform"]
+      - AWS_REGION=eu-north-1
+    # entrypoint: ["terraform"]
